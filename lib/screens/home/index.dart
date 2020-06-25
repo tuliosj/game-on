@@ -21,24 +21,24 @@ class _HomeState extends State<Home> {
         title: Text(widget.title),
       ),
       body: Center(
-          child: StreamBuilder(
-        stream: _bloc.counter,
-        initialData: 0,
-        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '${snapshot.data}',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          );
-        },
-      )),
+        child: StreamBuilder(
+          stream: _bloc.counter,
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '${snapshot.data}',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ],
+            );
+          },
+        ),
+      ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
