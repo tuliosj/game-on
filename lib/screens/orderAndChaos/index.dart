@@ -60,6 +60,14 @@ class oacScreen extends StatelessWidget {
                       style: font,
                     ),
                     StreamBuilder(
+                        stream: oac.winner$,
+                        builder: (BuildContext context, AsyncSnapshot snap) {
+                          return Text(
+                            '${snap.data}',
+                            style: font,
+                          );
+                        }),
+                    StreamBuilder(
                         stream: oac.board$,
                         builder: (BuildContext context, AsyncSnapshot snap) {
                           return Padding(
@@ -80,7 +88,7 @@ class oacScreen extends StatelessWidget {
                                   child: Container(
                                     margin: EdgeInsets.all(1),
                                     decoration: BoxDecoration(
-                                      color: snap.data != null
+                                      color: snap.data is List<Color>
                                           ? snap.data[index]
                                           : Colors.grey[200],
                                     ),

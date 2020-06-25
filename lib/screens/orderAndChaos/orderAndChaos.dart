@@ -12,10 +12,16 @@ class OrderAndChaos {
   Stream get red$ => _red.stream;
   bool get currentRed => _red.value;
 
+  BehaviorSubject<String> _winner = BehaviorSubject<String>.seeded('');
+  Stream get winner$ => _winner.stream;
+  String get currentWinner => _winner.value;
+
   color(int index) {
-    currentBoard[index] = currentRed ? Colors.red[400] : Colors.blue[400];
-    _board.add(currentBoard);
-    checkWinner();
+    if (currentBoard[index] == Colors.grey[300]) {
+      currentBoard[index] = currentRed ? Colors.red[400] : Colors.blue[400];
+      _winner.add(checkWinner());
+      _board.add(currentBoard);
+    }
   }
 
   changeColor() {
@@ -24,7 +30,57 @@ class OrderAndChaos {
 
   reset() {
     _board.add(new List<Color>.filled(36, Colors.grey[300], growable: false));
+    _winner.add(checkWinner());
   }
 
-  checkWinner() {}
+  checkWinner() {
+    var colors = [Colors.red[400], Colors.blue[400]];
+    bool order = false;
+    for (var color in colors) {
+      for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+          if (currentBoard[i * 6 + j] == color) {
+            order = checkDirection([1, 0], [i, j], color, 4) ||
+                checkDirection([0, 1], [i, j], color, 4) ||
+                checkDirection([1, 1], [i, j], color, 4) ||
+                checkDirection([-1, 1], [i, j], color, 4);
+            if (order) {
+              return 'Order';
+            }
+          }
+        }
+      }
+    }
+
+    if (!order) {
+      bool chaos = true;
+      for (var color in currentBoard) {
+        if (color == Colors.grey[300]) {
+          chaos = false;
+        }
+      }
+      if (chaos) {
+        return 'Chaos';
+      }
+    }
+
+    return '';
+  }
+
+  checkDirection(direction, index, color, verifications) {
+    if (verifications == 0) {
+      return true;
+    }
+
+    index[0] = index[0] + direction[0];
+    index[1] = index[1] + direction[1];
+    if (index[0] > 5 || index[0] < 0 || index[1] > 5 || index[1] < 0) {
+      return false;
+    }
+
+    if (currentBoard[index[0] * 6 + index[1]] == color) {
+      return checkDirection(direction, index, color, (verifications - 1));
+    }
+    return false;
+  }
 }

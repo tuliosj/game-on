@@ -22,7 +22,7 @@ class GameOn extends StatelessWidget {
         accentColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: "/intro",
+      initialRoute: "/oac",
       routes: routes,
     );
   }
