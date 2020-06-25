@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'screens/example1/examplescreen1.dart';
-import 'screens/example2/examplescreen2.dart';
+import 'package:game_on/screens/home/screen.dart';
+import 'package:game_on/screens/intro/screen.dart';
+import 'package:game_on/screens/chaosvsorder/screen.dart';
 
 final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
-  "/": (BuildContext context) => ExScreen1(),
-  "/ExScreen2": (BuildContext context) => ExScreen2(),
+  "/": (BuildContext context) => Home(),
+  "/intro": (BuildContext context) => IntroScreen(),
+  "/game": (BuildContext context) => ChaosVsOrder(),
 };
