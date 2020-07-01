@@ -6,8 +6,8 @@ import 'package:game_on/screens/orderAndChaos/orderAndChaos.dart';
 class oacScreen extends StatelessWidget {
   final oac = getIt.get<OrderAndChaos>();
 
-  TextStyle tStyle = TextStyle(color: Colors.white, fontSize: 30);
-  TextStyle font = GoogleFonts.lato(
+  final TextStyle tStyle = TextStyle(color: Colors.white, fontSize: 30);
+  final TextStyle font = GoogleFonts.poppins(
       textStyle: TextStyle(color: Colors.grey[900], fontSize: 24));
 
   @override
@@ -106,9 +106,10 @@ class oacScreen extends StatelessWidget {
                             children: <Widget>[
                               FloatingActionButton(
                                   onPressed: () => oac.changeColor(),
-                                  backgroundColor: snap.data
-                                      ? Colors.red[400]
-                                      : Colors.blue[400],
+                                  backgroundColor:
+                                      snap.data is bool && snap.data
+                                          ? Colors.red[400]
+                                          : Colors.blue[400],
                                   child: Icon(Icons.format_paint))
                             ],
                           );
