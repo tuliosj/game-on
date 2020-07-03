@@ -78,9 +78,11 @@ class OacScreen extends StatelessWidget {
                                       turnSnap.data is bool && turnSnap.data
                                           ? 'Order\'s turn!'
                                           : 'Chaos\'s turn!',
+                                      style: TextStyle(fontSize: 20),
                                     )
                                   : Text(
                                       '${snap.data} wins!',
+                                      style: TextStyle(fontSize: 20),
                                     );
                             });
                       }),

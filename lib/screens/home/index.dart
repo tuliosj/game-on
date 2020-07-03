@@ -39,6 +39,15 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () => Navigator.pushNamed(context, '/oac'),
                   child: Text('Order and Chaos', style: font),
                 ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  padding: const EdgeInsets.all(16.0),
+                  color: Colors.white,
+                  onPressed: () => Navigator.pushNamed(context, '/blackhole'),
+                  child: Text('Black Hole', style: font),
+                ),
               )
             ],
           ),
