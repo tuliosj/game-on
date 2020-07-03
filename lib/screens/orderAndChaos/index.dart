@@ -48,6 +48,7 @@ class OacScreen extends StatelessWidget {
                             )
                           : Icon(Icons.delete_forever),
                       tooltip: 'Reset this board',
+                      heroTag: 'reset',
                     );
                   },
                 ),
@@ -157,6 +158,7 @@ class OacScreen extends StatelessWidget {
                 ? Colors.red[400]
                 : Colors.blue[400],
             child: Icon(Icons.palette),
+            heroTag: 'palette',
           );
         },
       ),
