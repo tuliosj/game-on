@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts:
-  avatar_glow:
+  # avatar_glow:
   rxdart:
   get_it:
 

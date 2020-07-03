@@ -6,10 +6,6 @@ import 'package:game_on/screens/orderAndChaos/orderAndChaos.dart';
 class OacScreen extends StatelessWidget {
   final oac = getIt.get<OrderAndChaos>();
 
-  final TextStyle tStyle = TextStyle(color: Colors.white, fontSize: 30);
-  final TextStyle font = GoogleFonts.poppins(
-      textStyle: TextStyle(color: Colors.grey[900], fontSize: 24));
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,11 +78,9 @@ class OacScreen extends StatelessWidget {
                                       turnSnap.data is bool && turnSnap.data
                                           ? 'Order\'s turn!'
                                           : 'Chaos\'s turn!',
-                                      style: font,
                                     )
                                   : Text(
                                       '${snap.data} wins!',
-                                      style: font,
                                     );
                             });
                       }),
