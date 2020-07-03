@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:game_on/main.dart';
+import 'package:avatar_glow/avatar_glow.dart';
+
 import 'package:game_on/screens/blackHole/blackHole.dart';
 
 class BlackHoleScreen extends StatelessWidget {
@@ -91,12 +91,15 @@ class BlackHoleScreen extends StatelessWidget {
                                               width: 40,
                                               margin: EdgeInsets.all(1),
                                               decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.grey[200],
+                                                    width: 2),
                                                 borderRadius:
                                                     BorderRadius.circular(50),
                                                 color:
                                                     !(snap.data is List<int>) ||
                                                             snap.data[j] == 0
-                                                        ? Colors.grey[200]
+                                                        ? Colors.grey[700]
                                                         : (snap.data[j] > 0
                                                             ? Colors.red[400]
                                                             : Colors.blue[400]),
@@ -107,13 +110,16 @@ class BlackHoleScreen extends StatelessWidget {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: <Widget>[
-                                                  snap.data is List<int>
-                                                      ? Text(snap.data[j] != 0
-                                                          ? snap.data[j]
+                                                  snap.data is List<int> &&
+                                                          snap.data[j] != 0
+                                                      ? Text(
+                                                          snap.data[j]
                                                               .abs()
-                                                              .toString()
-                                                          : '')
-                                                      : Text('')
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white))
+                                                      : Container()
                                                 ],
                                               ),
                                             ),

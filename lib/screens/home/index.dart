@@ -40,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text('Order and Chaos', style: font),
                 ),
               ),
+              const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 child: RaisedButton(

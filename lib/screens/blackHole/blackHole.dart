@@ -52,6 +52,7 @@ class BlackHole {
 
   reset() {
     if (currentResetExtended) {
+      _order.add(true);
       _red.add(0);
       _blue.add(0);
       _board.add(new List<int>.filled(21, 0, growable: false));
@@ -60,6 +61,8 @@ class BlackHole {
   }
 
   // Board controller
+
+  checkVictory() {}
 
   // Builders
   void infoDialog(context) {
@@ -72,17 +75,12 @@ class BlackHole {
             child: Column(
               children: <Widget>[
                 Text(
-                    "In this game, you can control both colors. One of you is Order and the other is Chaos."),
+                    "Red and Blue alternate turns, starting by Red. Each player has 10 discs with a value, but there are 21 tiles."),
                 SizedBox(
                   height: 8.0,
                 ),
                 Text(
-                    "Order plays first, and aims to get five like pieces in a row either vertically, horizontally, or diagonally."),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Text(
-                    "Chaos aims to fill the board without completion of a line of five like pieces."),
+                    "The remaining tile is the Black Hole. When all tiles have been placed, the Black Hole sucks in all of its neighbouring discs. Each player then sums the value of their discs and whoever has LESS wins!"),
               ],
             ),
           ),

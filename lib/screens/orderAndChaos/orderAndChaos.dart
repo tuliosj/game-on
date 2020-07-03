@@ -44,6 +44,7 @@ class OrderAndChaos {
 
   reset() {
     if (currentResetExtended) {
+      _order.add(true);
       _board.add(new List<Color>.filled(36, Colors.grey[300], growable: false));
       _winner.add(checkWinner());
     }
